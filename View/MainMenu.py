@@ -17,7 +17,7 @@ class MainMenu:
             print("5. Salir del programa")
             print("-" * 50)
             option = input("Ingrese una opcion: ")
-            if option == "1" or option == "4":
+            if option == "1":
                 user_view = UserView()
                 validation = user_view.login_menu()
                 if validation[0] == True:
