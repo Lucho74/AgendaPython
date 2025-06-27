@@ -13,16 +13,21 @@ class MainMenu:
             print("1. Login de usuario")
             print("2. Registro de usuario")
             print("3. Listar Usuarios")
-            print("4. Eliminar usuario")
+            print("4. Baja de usuario")
             print("5. Salir del programa")
             print("-" * 50)
             option = input("Ingrese una opcion: ")
-            if option == "1":
+            if option == "1" or option == "4":
                 user_view = UserView()
-                validation = user_view.login_menu()
+                validation = user_view.login_menu(option)
                 if validation[0] == True:
-                    user = validation[1]
-                    ContactView(user).menu()
+                    if option == "1":
+                        user = validation[1]
+                        ContactView(user).menu()
+                    else:
+                        user = validation[1]
+                        user_controller = UserController()
+                        user_controller.delete_user(user)
                 else:
                     print(" Usuario o contraseña incorrecta ".center(50, "!"))
                     input(" Presione enter para continuar ".center(50, "!"))
@@ -32,16 +37,6 @@ class MainMenu:
             elif option == "3":
                 user_view = UserView()
                 validation = user_view.list_users()
-            elif option == "4":
-                user_view = UserView()
-                validation = user_view.delete_menu()
-                if validation[0] == True:
-                    user = validation[1]
-                    user_controller = UserController()
-                    user_controller.delete_user(user)
-                else:
-                    print(" Usuario o contraseña incorrecta ".center(50, "!"))
-                    input(" Presione enter para continuar ".center(50, "!"))
             elif option == "5":
                 break
             else:

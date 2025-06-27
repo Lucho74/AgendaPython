@@ -25,9 +25,12 @@ class UserView:
         user_controller.add_user(user_for_creation)
         input(" Presione enter para continuar ".center(50, "!"))
 
-    def login_menu(self):
+    def login_menu(self, tittle):
         system("cls")
-        print(" Login de usuario ".center(50, "#"))
+        if tittle == "1":
+            print(" Login de usuario ".center(50, "#"))
+        else:
+            print(" Baja de usuario ".center(50, "#"))
         print("-" * 50)
         username = input("Ingrese el nombre de usuario: ")
         print("-" * 50)
@@ -48,17 +51,3 @@ class UserView:
             print(user)
         print("#" * 50)
         input(" Presione enter para continuar ".center(50, "!"))
-
-    def delete_menu(self):
-        system("cls")
-        print(" Eliminación de usuario ".center(50, "#"))
-        print("-" * 50)
-        username = input("Ingrese el nombre de usuario: ")
-        print("-" * 50)
-        password = input("Ingrese la contraseña: ")
-        print("-" * 50)
-        input(" Presione enter para continuar ".center(50, "!"))
-        user_controller = UserController()
-        user_for_login = UserForLogin(username, password)
-        validation = user_controller.login(user_for_login)
-        return validation
