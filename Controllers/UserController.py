@@ -38,3 +38,7 @@ class UserController:
                 return True, user_validated
             else:
                 return False, user_validated
+
+    def delete_user(self, user):
+        user_repository = UserRepository()
+        user_repository = user_repository.delete_user(user_repository.get_user(user))
