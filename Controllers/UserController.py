@@ -41,4 +41,5 @@ class UserController:
 
     def delete_user(self, user):
         user_repository = UserRepository()
-        user_repository = user_repository.delete_user(user_repository.get_user(user))
+        user_from_repo = user_repository.get_user(user)
+        user_repository.delete_user(user_from_repo)
